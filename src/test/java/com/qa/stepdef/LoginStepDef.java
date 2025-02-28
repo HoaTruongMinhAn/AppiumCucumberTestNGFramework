@@ -1,36 +1,34 @@
 package com.qa.stepdef;
 
+import com.qa.pages.LoginPage;
+import com.qa.pages.MenuPage;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 
 public class LoginStepDef {
     @When("I enter username as {string}")
-    public void iEnterUsernameAs(String username) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    public void iEnterUsernameAs(String username) throws InterruptedException {
+        new LoginPage().enterUserName(username);
     }
 
     @When("I enter password as {string}")
     public void iEnterPasswordAs(String password) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        new LoginPage().enterPassword(password);
     }
 
     @When("I login")
     public void iLogin() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        new LoginPage().pressLoginBtn();
     }
 
     @Then("login should fail with an error {string}")
     public void loginShouldFailWithAnError(String errorMessage) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        Assert.assertEquals(new LoginPage().getErrTxt(), errorMessage);
     }
 
     @Then("I should see Setting button displayed")
     public void iShouldSeeSettingButtonDisplayed() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        Assert.assertTrue(new MenuPage().isSettingButtonDisplayed());
     }
 }
