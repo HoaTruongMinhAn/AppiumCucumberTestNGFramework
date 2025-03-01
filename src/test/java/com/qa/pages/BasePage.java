@@ -167,7 +167,6 @@ public class BasePage {
 //        scrollObject.put("toVisible", "sdfnjksdnfkld");
         driver.executeScript("mobile:scroll", scrollObject);
         By m = AppiumBy.iOSNsPredicateString(predicateString);
-        System.out.println("Mobilelement is " + m);
         return m;
     }
 

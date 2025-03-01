@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
@@ -23,7 +23,7 @@
         <aspectj.version>[1.9.22.1,)</aspectj.version>
         <allure.version>[2.29.1,)</allure.version>
         <extent.version>[5.1.2,)</extent.version>
-        <log4j.version>[2.24.3,)</log4j.version>
+        <log4j.version>2.23.1</log4j.version>
         <slf4j.version>[2.0.16,)</slf4j.version>
         <reportng.version>[1.1.4,)</reportng.version>
         <velocity.version>[1.4,)</velocity.version>
@@ -223,6 +223,20 @@
             <version>${cucumber.version}</version>
             <scope>test</scope>
         </dependency>
+
+        <!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core &ndash;&gt;-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.apache.logging.log4j</groupId>-->
+        <!--            <artifactId>log4j-core</artifactId>-->
+        <!--            <version>2.23.1</version>-->
+        <!--        </dependency>-->
+
+        <!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api &ndash;&gt;-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.apache.logging.log4j</groupId>-->
+        <!--            <artifactId>log4j-api</artifactId>-->
+        <!--            <version>2.23.1</version>-->
+        <!--        </dependency>-->
 
     </dependencies>
 

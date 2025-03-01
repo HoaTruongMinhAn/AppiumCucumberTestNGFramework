@@ -2,12 +2,22 @@ package com.qa.utils;
 
 public class GlobalParams {
     private static ThreadLocal<String> platformName = new ThreadLocal<String>();
+    private static ThreadLocal<String> dateTime = new ThreadLocal<String>();
     private static ThreadLocal<String> udid = new ThreadLocal<String>();
     private static ThreadLocal<String> deviceName = new ThreadLocal<String>();
     private static ThreadLocal<String> systemPort = new ThreadLocal<String>();
     private static ThreadLocal<String> chromeDriverPort = new ThreadLocal<String>();
     private static ThreadLocal<String> wdaLocalPort = new ThreadLocal<String>();
     private static ThreadLocal<String> webkitDebugProxyPort = new ThreadLocal<String>();
+
+
+    public String getDateTime() {
+        return dateTime.get();
+    }
+
+    public void setDateTime(String newDateTime) {
+        dateTime.set(newDateTime);
+    }
 
     public String getPlatformName() {
         return platformName.get();
@@ -69,7 +79,7 @@ public class GlobalParams {
         GlobalParams params = new GlobalParams();
         params.setPlatformName(System.getProperty("platformName", "Android"));
         params.setUDID(System.getProperty("udid", "R5CX90YXF5Z"));
-        params.setDeviceName(System.getProperty("deviceName", "Samsung A55"));
+        params.setDeviceName(System.getProperty("deviceName", "SamsungA55"));
 
         switch (params.getPlatformName()) {
             case "Android":
