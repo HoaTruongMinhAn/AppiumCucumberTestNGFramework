@@ -3,6 +3,7 @@ package com.qa.utils;
 public class GlobalParams {
     private static ThreadLocal<String> platformName = new ThreadLocal<String>();
     private static ThreadLocal<String> dateTime = new ThreadLocal<String>();
+    private static ThreadLocal<String> emulator = new ThreadLocal<String>();
     private static ThreadLocal<String> udid = new ThreadLocal<String>();
     private static ThreadLocal<String> deviceName = new ThreadLocal<String>();
     private static ThreadLocal<String> systemPort = new ThreadLocal<String>();
@@ -17,6 +18,14 @@ public class GlobalParams {
 
     public void setDateTime(String newDateTime) {
         dateTime.set(newDateTime);
+    }
+
+    public String getEmulator() {
+        return emulator.get();
+    }
+
+    public void setEmulator(String newEmulator) {
+        emulator.set(newEmulator);
     }
 
     public String getPlatformName() {

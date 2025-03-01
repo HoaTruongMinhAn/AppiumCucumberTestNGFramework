@@ -16,9 +16,6 @@
         <!-- Encoding for Report -->
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <project.build.directory>C:\Users\minhanhoa.truong\Automation_Appium\05 - Cucumber\AppiumCucumberFramework
-        </project.build.directory>
-
         <!-- Global variable for dependencies -->
         <selenium.version>[4.27.0,)</selenium.version>
         <appium.version>[9.4.0,)</appium.version>
@@ -40,6 +37,7 @@
         <owner.version>[1.0.12,)</owner.version>
         <poi.version>[5.4.0,)</poi.version>
         <cucumber.version>[7.21.1,)</cucumber.version>
+        <commons.codec.version>[1.18.0,)</commons.codec.version>
     </properties>
 
     <dependencies>
@@ -227,6 +225,13 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>${commons.codec.version}</version>
+        </dependency>
+
         <!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core &ndash;&gt;-->
         <!--        <dependency>-->
         <!--            <groupId>org.apache.logging.log4j</groupId>-->
@@ -291,34 +296,15 @@
                             </classificationFiles>
                             <!-- Add custom CSS -->
                             <customCss>
-                                img, video, embed {
-                                max-width: 400px !important;
-                                max-height: 300px !important;
-                                width: auto !important;
-                                height: auto !important;
-                                }
-
-                                /* Target specific embedding containers */
-                                .embedding-content img, .embedding-content video, .embedding img, .embedding video {
-                                max-width: 400px !important;
-                                max-height: 300px !important;
-                                width: auto !important;
-                                height: auto !important;
-                                }
-
-                                /* Target embedding iframes if used */
-                                iframe.embedding {
+                                img, video {
                                 max-width: 400px !important;
                                 max-height: 300px !important;
                                 }
                             </customCss>
-
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
-
-
         </plugins>
     </build>
 </project>

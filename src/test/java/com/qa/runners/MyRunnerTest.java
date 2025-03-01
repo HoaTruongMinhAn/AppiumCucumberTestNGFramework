@@ -18,13 +18,14 @@ import static io.cucumber.junit.CucumberOptions.SnippetType.CAMELCASE;
                 , "html:target/cucumber/report.html"
                 , "summary"
 //                , "me.jvt.cucumber.report.PrettyReports:target/Pixel3/cucumber-html-reports"
+                , "json:target/cucumber-reports/cucumber.json"
         }
         , features = {"src/test/resources"}
         , glue = {"com.qa.stepdef"}
         , snippets = CAMELCASE
         , dryRun = false
         , monochrome = true
-//        ,tags = "@test"
+        , tags = "@test"
 
 )
 

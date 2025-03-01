@@ -18,25 +18,29 @@ public class Hooks {
         basePage.closeApp();
         basePage.launchApp();
 
-/*        GlobalParams params = new GlobalParams();
-        params.initializeGlobalParams();
-
-        ThreadContext.put("ROUTINGKEY", params.getPlatformName() + "_"
-                + params.getDeviceName());
-
-        new ServerManager().startServer();
-        new DriverManager().initializeDriver();*/
+//        GlobalParams params = new GlobalParams();
+//        params.initializeGlobalParams();
+//
+//        ThreadContext.put("ROUTINGKEY", params.getPlatformName() + "_"
+//                + params.getDeviceName());
+//
+//        new ServerManager().startServer();
+//        new DriverManager().initializeDriver();
         new VideoManager().startRecording();
     }
 
     @After
     public void quit(Scenario scenario) throws IOException {
+        byte[] video = new VideoManager().stopRecording(scenario.getName());
+
         if (scenario.isFailed()) {
             byte[] screenshot = new DriverManager().getDriver().getScreenshotAs(OutputType.BYTES);
+
+            //TODO reduce attachment size
             scenario.attach(screenshot, "image/png", scenario.getName());
+            scenario.attach(video, "video/mp4", "Video" + scenario.getName());
         }
 
-        new VideoManager().stopRecording(scenario.getName());
 /*        DriverManager driverManager = new DriverManager();
         if(driverManager.getDriver() != null){
             driverManager.getDriver().quit();

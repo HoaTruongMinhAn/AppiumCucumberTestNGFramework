@@ -23,6 +23,7 @@ public class ServerManager {
     }
 
     public void startServer() {
+        /////////////// Teacher solution: not work ///////////////
 //        utils.log().info("starting appium server");
 //        AppiumDriverLocalService server = WindowsGetAppiumService();
 //        server.start();
@@ -34,6 +35,8 @@ public class ServerManager {
 //        this.server.set(server);
 //        utils.log().info("Appium server started");
 
+
+        /////////////// Hoa solution: work well ///////////////
         //Start Appium server
         killAppiumServer();
         utils.log().info("starting appium server");

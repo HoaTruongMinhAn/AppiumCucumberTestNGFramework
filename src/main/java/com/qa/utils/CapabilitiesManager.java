@@ -1,9 +1,12 @@
 package com.qa.utils;
 
+import io.appium.java_client.android.options.UiAutomator2Options;
+import io.appium.java_client.ios.options.XCUITestOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.Properties;
 
 public class CapabilitiesManager {
@@ -51,5 +54,86 @@ public class CapabilitiesManager {
             utils.log().fatal("Failed to load capabilities. ABORT!!" + e.toString());
             throw e;
         }
+    }
+
+    public UiAutomator2Options getUiAutomator2Options() throws Exception {
+        GlobalParams params = new GlobalParams();
+        Properties props = new PropertyManager().getProps();
+        UiAutomator2Options options = new UiAutomator2Options();
+
+        //Set options
+        options.setPlatformName(params.getPlatformName());
+        options.setDeviceName(params.getDeviceName());
+        options.setUdid(params.getUDID());
+        options.setAutomationName(props.getProperty("androidAutomationName"));
+
+        //Ser avd for emulator
+//        if (params.getEmulator().equals("true")) {
+//            options.setAvd(params.getDeviceName());
+//        }
+        options.setSystemPort(Integer.parseInt(params.getSystemPort()));
+        options.setChromedriverPort(Integer.parseInt(params.getChromeDriverPort()));
+
+
+        //Install
+        String appShortURL = props.getProperty("androidAppLocation");
+        String appUrl = System.getProperty("user.dir") + GlobalConstants.SEPARATOR + "src" + GlobalConstants.SEPARATOR + "test" + GlobalConstants.SEPARATOR + "resources" + GlobalConstants.SEPARATOR + appShortURL;
+        options.setApp(appUrl);
+        utils.log().info("appUrl is: " + appUrl);
+
+        //App package
+        options.setAppPackage(props.getProperty("androidAppPackage"));
+        options.setAppActivity(props.getProperty("androidAppActivity"));
+
+        //Unlock option
+        options.setUnlockType(props.getProperty("androidUnlockType"));
+        options.setUnlockKey(props.getProperty("androidUnlockKey"));
+
+        //Permission
+        options.autoGrantPermissions();
+
+        //Set timeout
+//                options.setAvdLaunchTimeout(Duration.ofSeconds(180));
+//                options.setAvdReadyTimeout(Duration.ofSeconds(180));
+        options.setNewCommandTimeout(Duration.ofSeconds(300));
+
+        return options;
+    }
+
+    public XCUITestOptions getXCUITestOptions() throws Exception {
+        GlobalParams params = new GlobalParams();
+        Properties props = new PropertyManager().getProps();
+        XCUITestOptions iOSOptions = new XCUITestOptions();
+
+        iOSOptions.setAutomationName(props.getProperty("iOSAutomationName"));
+
+        //Install
+        String iOSAppUrl = System.getProperty("user.dir") + GlobalConstants.SEPARATOR + "src" + GlobalConstants.SEPARATOR + "test"
+                + GlobalConstants.SEPARATOR + "resources" + GlobalConstants.SEPARATOR + "app" + GlobalConstants.SEPARATOR + "SwagLabsMobileApp.app";
+        iOSOptions.setApp(iOSAppUrl);
+        utils.log().info("appUrl is: " + iOSAppUrl);
+
+        iOSOptions.setBundleId(props.getProperty("iOSBundleId"));
+        iOSOptions.setWdaLocalPort(Integer.parseInt(params.getWdaLocalPort()));
+//                    iOSOptions.setWebKitDebugProxyPort(27753);
+        iOSOptions.setCapability("webkitDebugProxyPort", params.getWebkitDebugProxyPort());
+
+
+        //Unlock option
+        iOSOptions.setCapability("unlockType", "passcode"); // Use "passcode" or "biometric"
+        iOSOptions.setCapability("unlockKey", "000000");
+
+        //Permission
+        iOSOptions.setCapability("permissions", "location=always");
+//                    iOSOptions.autoAcceptAlerts();
+        iOSOptions.setAutoAcceptAlerts(true);
+
+
+        //Set timeout
+//                options.setAvdLaunchTimeout(Duration.ofSeconds(180));
+//                options.setAvdReadyTimeout(Duration.ofSeconds(180));
+        iOSOptions.setNewCommandTimeout(Duration.ofSeconds(300));
+
+        return iOSOptions;
     }
 }

@@ -10,20 +10,20 @@ import java.io.IOException;
 public class VideoManager {
     TestUtils utils = new TestUtils();
 
-    public void startRecording(){
+    public void startRecording() {
         ((CanRecordScreen) new DriverManager().getDriver()).startRecordingScreen();
     }
 
-    public void stopRecording(String scenarioName) throws IOException {
+    public byte[] stopRecording(String scenarioName) throws IOException {
         GlobalParams params = new GlobalParams();
         String media = ((CanRecordScreen) new DriverManager().getDriver()).stopRecordingScreen();
         String dirPath = params.getPlatformName() + "_"
-                + params.getDeviceName() + File.separator +"Videos";
+                + params.getDeviceName() + File.separator + "Videos";
 
         File videoDir = new File(dirPath);
 
-        synchronized(videoDir){
-            if(!videoDir.exists()) {
+        synchronized (videoDir) {
+            if (!videoDir.exists()) {
                 videoDir.mkdirs();
             }
         }
@@ -36,9 +36,10 @@ public class VideoManager {
         } catch (Exception e) {
             utils.log().error("error during video capture" + e.toString());
         } finally {
-            if(stream != null) {
+            if (stream != null) {
                 stream.close();
             }
         }
+        return Base64.decodeBase64(media);
     }
 }
