@@ -289,30 +289,6 @@
                             <classificationFiles>
                                 <param>**/classifications.properties</param>
                             </classificationFiles>
-                            <!-- Add custom CSS -->
-                            <customCss>
-                                img, video, embed {
-                                max-width: 400px !important;
-                                max-height: 300px !important;
-                                width: auto !important;
-                                height: auto !important;
-                                }
-
-                                /* Target specific embedding containers */
-                                .embedding-content img, .embedding-content video, .embedding img, .embedding video {
-                                max-width: 400px !important;
-                                max-height: 300px !important;
-                                width: auto !important;
-                                height: auto !important;
-                                }
-
-                                /* Target embedding iframes if used */
-                                iframe.embedding {
-                                max-width: 400px !important;
-                                max-height: 300px !important;
-                                }
-                            </customCss>
-
                         </configuration>
                     </execution>
                 </executions>
