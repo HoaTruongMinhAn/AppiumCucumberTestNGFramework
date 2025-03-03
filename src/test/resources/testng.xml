@@ -14,16 +14,16 @@
         </classes>
     </test>
 
-    <!--    <test name="Run on Tecno">-->
-    <!--        <parameter name="emulator" value="false"/>-->
-    <!--        <parameter name="platformName" value="Android"/>-->
-    <!--        <parameter name="uuid" value="1026225361002983"/>-->
-    <!--        <parameter name="deviceName" value="Tecno"/>-->
-    <!--        <parameter name="systemPort" value="10002"/>-->
-    <!--        <parameter name="chromeDriverPort" value="11002"/>-->
+    <test name="Run on Tecno">
+        <parameter name="emulator" value="false"/>
+        <parameter name="platformName" value="Android"/>
+        <parameter name="uuid" value="1026225361002983"/>
+        <parameter name="deviceName" value="Tecno"/>
+        <parameter name="systemPort" value="10002"/>
+        <parameter name="chromeDriverPort" value="11002"/>
 
-    <!--        <classes>-->
-    <!--            <class name="com.qa.runners.MyTecnoTestNGRunnerTest"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+        <classes>
+            <class name="com.qa.runners.MyTecnoTestNGRunnerTest"/>
+        </classes>
+    </test>
 </suite> <!-- Suite -->

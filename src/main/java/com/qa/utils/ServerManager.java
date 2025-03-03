@@ -23,19 +23,6 @@ public class ServerManager {
     }
 
     public void startServer() {
-        /////////////// Teacher solution: not work ///////////////
-//        utils.log().info("starting appium server");
-//        AppiumDriverLocalService server = WindowsGetAppiumService();
-//        server.start();
-//        if (server == null || !server.isRunning()) {
-//            utils.log().fatal("Appium server not started. ABORT!!!");
-//            throw new AppiumServerHasNotBeenStartedLocallyException("Appium server not started. ABORT!!!");
-//        }
-//        server.clearOutPutStreams(); // -> Comment this if you want to see server logs in the console
-//        this.server.set(server);
-//        utils.log().info("Appium server started");
-
-
         /////////////// Hoa solution: work well ///////////////
         //Start Appium server
         killAppiumServer();
@@ -43,7 +30,7 @@ public class ServerManager {
         setServer(getAppiumService());
         getServer().clearOutPutStreams();
         getServer().start();
-        utils.log().info("Server started");
+        utils.log().info("Server started as " + getServer().toString());
     }
 
     public void killAppiumServer() {
@@ -135,5 +122,13 @@ public class ServerManager {
                 .withLogOutput(ByteStreams.nullOutputStream())
                 .withLogFile(new File("ServerLogs/server.log"))
         );
+    }
+
+    public void stopCurrentThreadServer() {
+        AppiumDriverLocalService server = getServer();
+        if (server != null) {
+            server.stop();
+            this.server.remove();
+        }
     }
 }
