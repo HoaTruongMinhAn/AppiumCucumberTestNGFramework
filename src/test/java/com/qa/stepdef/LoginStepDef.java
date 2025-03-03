@@ -4,7 +4,7 @@ import com.qa.pages.LoginPage;
 import com.qa.pages.MenuPage;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.junit.Assert;
+import org.testng.Assert;
 
 public class LoginStepDef {
     @When("I enter username as {string}")

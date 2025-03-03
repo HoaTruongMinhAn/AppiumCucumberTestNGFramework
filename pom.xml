@@ -16,7 +16,8 @@
         <!-- Encoding for Report -->
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <project.build.directory>C:\Users\minhanhoa.truong\Automation_Appium\06 - Cucumber TestNG\AppiumCucumberTestNGFramework
+        <project.build.directory>C:\Users\minhanhoa.truong\Automation_Appium\06 - Cucumber
+            TestNG\AppiumCucumberTestNGFramework
         </project.build.directory>
 
         <!-- Global variable for dependencies -->
@@ -219,28 +220,12 @@
             <version>${cucumber.version}</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-junit -->
+        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-testng -->
         <dependency>
             <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-junit</artifactId>
+            <artifactId>cucumber-testng</artifactId>
             <version>${cucumber.version}</version>
-            <scope>test</scope>
         </dependency>
-
-        <!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core &ndash;&gt;-->
-        <!--        <dependency>-->
-        <!--            <groupId>org.apache.logging.log4j</groupId>-->
-        <!--            <artifactId>log4j-core</artifactId>-->
-        <!--            <version>2.23.1</version>-->
-        <!--        </dependency>-->
-
-        <!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api &ndash;&gt;-->
-        <!--        <dependency>-->
-        <!--            <groupId>org.apache.logging.log4j</groupId>-->
-        <!--            <artifactId>log4j-api</artifactId>-->
-        <!--            <version>2.23.1</version>-->
-        <!--        </dependency>-->
-
     </dependencies>
 
     <build>
@@ -249,19 +234,23 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.5.2</version> <!-- Use a recent version -->
+                <version>3.5.2</version>
                 <configuration>
-                    <includes>
-                        <include>**/*MyRunnerTest.java
-                        </include> <!-- Adjust according to your test runner naming pattern -->
-                    </includes>
+                    <!-- Suite testng xml file to consider for test execution -->
+                    <suiteXmlFiles>
+                        <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
+                    </suiteXmlFiles>
+                    <systemPropertyVariables>
+                        <cucumber.publish.quiet>true</cucumber.publish.quiet>
+                    </systemPropertyVariables>
+
                     <testFailureIgnore>true</testFailureIgnore>
-                    <useFile>false</useFile>
                 </configuration>
                 <dependencies>
+                    <!-- https://mvnrepository.com/artifact/org.apache.maven.surefire/surefire-testng -->
                     <dependency>
                         <groupId>org.apache.maven.surefire</groupId>
-                        <artifactId>surefire-junit47</artifactId> <!-- If you're using JUnit -->
+                        <artifactId>surefire-testng</artifactId>
                         <version>3.5.2</version>
                     </dependency>
                 </dependencies>
@@ -271,7 +260,7 @@
             <plugin>
                 <groupId>net.masterthought</groupId>
                 <artifactId>maven-cucumber-reporting</artifactId>
-                <version>5.8.5</version>
+                <version>5.8.0</version>
                 <executions>
                     <execution>
                         <id>execution</id>
@@ -280,7 +269,7 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <projectName>Your Project Name</projectName>
+                            <projectName>Swaglags with Appium Cucumber TestNG Framework</projectName>
                             <outputDirectory>${project.build.directory}/cucumber-reports</outputDirectory>
                             <inputDirectory>${project.build.directory}/cucumber-reports</inputDirectory>
                             <jsonFiles>
@@ -289,6 +278,8 @@
                             <classificationFiles>
                                 <param>**/classifications.properties</param>
                             </classificationFiles>
+
+                            <skip>false</skip>
                         </configuration>
                     </execution>
                 </executions>

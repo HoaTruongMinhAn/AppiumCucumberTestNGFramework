@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Swaglabs Automation Testing" preserve-order="true" parallel="tests" thread-count="3">
+    <test name="Run on Samsung A55">
+        <parameter name="emulator" value="false"/>
+        <parameter name="platformName" value="Android"/>
+        <parameter name="uuid" value="R5CX90YXF5Z"/>
+        <parameter name="deviceName" value="Samsung A55"/>
+        <parameter name="systemPort" value="10000"/>
+        <parameter name="chromeDriverPort" value="11000"/>
+
+        <classes>
+            <class name="com.qa.runners.MySamsungA55TestNGRunnerTest"/>
+        </classes>
+    </test>
+
+    <test name="Run on Tecno">
+        <parameter name="emulator" value="false"/>
+        <parameter name="platformName" value="Android"/>
+        <parameter name="uuid" value="1026225361002983"/>
+        <parameter name="deviceName" value="Tecno"/>
+        <parameter name="systemPort" value="10002"/>
+        <parameter name="chromeDriverPort" value="11002"/>
+
+        <classes>
+            <class name="com.qa.runners.MySamsungA55TestNGRunnerTest"/>
+        </classes>
+    </test>
+</suite> <!-- Suite -->
