@@ -19,8 +19,8 @@ public class Hooks {
 
 
     public static void cucumberJsonUpdate(String jsonFilePath, String deviceName) {
-//        String jsonFilePath = "target/cucumber-reports/cucumber.json";
-//        String deviceName = System.getProperty("deviceName", "UnknownDevice");
+        //TODO update scenario name: "Login scenarios" + device name
+
         System.out.println("jsonFilePath: " + jsonFilePath);
         System.out.println("deviceName: " + deviceName);
 
@@ -37,10 +37,15 @@ public class Hooks {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
             JsonNode rootNode = objectMapper.readTree(new File(jsonFilePath));
-            System.out.println("rootNode: " + rootNode);
+
 
             for (JsonNode feature : rootNode) {
-                System.out.println("feature: " + feature);
+                //replace scenario
+                String originalScenarioName = feature.get("name").asText();
+                String updatedScenarioName = originalScenarioName + " [Device: " + deviceName + "]";
+                ((ObjectNode) feature).put("name", updatedScenarioName);
+
+                //replace method name
                 for (JsonNode scenario : feature.get("elements")) {
                     System.out.println("JSON has elements");
                     if (scenario.has("name")) {
