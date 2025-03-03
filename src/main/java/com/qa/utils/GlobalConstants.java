@@ -3,6 +3,7 @@ package com.qa.utils;
 import java.io.File;
 
 public class GlobalConstants {
+    public static final String PROJECT_PATH = System.getProperty("user.dir");
     // Wait Infor
     public static final long VERY_SHORT_TIMEOUT = 1;
     public static final long SHORT_TIMEOUT = 3;

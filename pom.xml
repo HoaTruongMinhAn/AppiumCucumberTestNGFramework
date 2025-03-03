@@ -278,7 +278,9 @@
                             <classificationFiles>
                                 <param>**/classifications.properties</param>
                             </classificationFiles>
-
+                            <mergeFeaturesById>false</mergeFeaturesById>
+                            <mergeFeaturesWithRetest>false</mergeFeaturesWithRetest>
+                            <checkBuildResult>false</checkBuildResult>
                             <skip>false</skip>
                         </configuration>
                     </execution>

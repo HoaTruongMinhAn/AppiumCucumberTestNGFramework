@@ -3,12 +3,16 @@ package com.qa.runners;
 import com.qa.utils.DriverManager;
 import com.qa.utils.GlobalParams;
 import com.qa.utils.ServerManager;
+import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
 import io.cucumber.testng.CucumberOptions;
 import io.cucumber.testng.FeatureWrapper;
 import io.cucumber.testng.PickleWrapper;
 import io.cucumber.testng.TestNGCucumberRunner;
 import org.apache.logging.log4j.ThreadContext;
 import org.testng.annotations.*;
+
+import java.lang.reflect.Field;
 
 /**
  * An example of using TestNG when the test class does not inherit from
@@ -17,9 +21,9 @@ import org.testng.annotations.*;
  */
 @CucumberOptions(
         plugin = {"pretty"
-                , "html:target/cucumber/report.html"
+//                , "html:target/cucumber/report.html"
                 , "summary"
-                , "json:target/cucumber-reports/cucumber.json"
+//                , "json:target/cucumber-reports/cucumber.json"
         }
         , features = {"src/test/resources"}
         , glue = {"com.qa.stepdef"}
@@ -55,6 +59,21 @@ public class MyTecnoTestNGRunnerTest {
         new ServerManager().startServer();
         new DriverManager().initializeDriver();
         testNGCucumberRunner = new TestNGCucumberRunner(this.getClass());
+    }
+
+    @Before
+    public void beforeScenario(Scenario scenario) {
+        String deviceName = new GlobalParams().getDeviceName();
+        String updatedScenarioName = scenario.getName() + " [Device: " + deviceName + "]";
+
+        // Using reflection to update the scenario name
+        try {
+            Field nameField = scenario.getClass().getDeclaredField("name");
+            nameField.setAccessible(true);
+            nameField.set(scenario, updatedScenarioName);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Test(groups = "cucumber", description = "Runs Cucumber Scenarios", dataProvider = "scenarios")

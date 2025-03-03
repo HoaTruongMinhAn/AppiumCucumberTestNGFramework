@@ -1,6 +1,8 @@
 package com.qa.runners;
 
+import com.qa.stepdef.Hooks;
 import com.qa.utils.DriverManager;
+import com.qa.utils.GlobalConstants;
 import com.qa.utils.GlobalParams;
 import com.qa.utils.ServerManager;
 import io.cucumber.testng.CucumberOptions;
@@ -17,9 +19,9 @@ import org.testng.annotations.*;
  */
 @CucumberOptions(
         plugin = {"pretty"
-                , "html:target/cucumber/SamsungA55/report.html"
+//                , "html:target/cucumber/SamsungA55/report.html"
                 , "summary"
-                , "json:target/cucumber-reports/SamsungA55-cucumber.json"
+//                , "json:target/cucumber-reports/SamsungA55-cucumber.json"
         }
         , features = {"src/test/resources"}
         , glue = {"com.qa.stepdef"}
@@ -28,12 +30,14 @@ import org.testng.annotations.*;
 //        , strict = true
         , tags = "@test")
 public class MySamsungA55TestNGRunnerTest {
-
     private TestNGCucumberRunner testNGCucumberRunner;
 
     @Parameters({"emulator", "platformName", "uuid", "deviceName", "systemPort", "chromeDriverPort", "wdaLocalPort", "webkitDebugProxyPort"})
     @BeforeClass(alwaysRun = true)
     public void setUpClass(@Optional("androidOnly") String emulator, String platformName, String uuid, String deviceName, @Optional("androidOnly") String systemPort, @Optional("androidOnly") String chromeDriverPort, @Optional("iOSOnly") String wdaLocalPort, @Optional("iOSOnly") String webkitDebugProxyPort) throws Exception {
+        //Set cucumber json output
+        System.setProperty("cucumber.plugin", "json:target/cucumber-reports/cucumber-" + deviceName + ".json");
+
         ThreadContext.put("ROUTINGKEY", platformName + "_" + deviceName);
         GlobalParams params = new GlobalParams();
         params.setEmulator(emulator);
@@ -55,7 +59,9 @@ public class MySamsungA55TestNGRunnerTest {
         new ServerManager().startServer();
         new DriverManager().initializeDriver();
         testNGCucumberRunner = new TestNGCucumberRunner(this.getClass());
+        System.out.println("##################### beforeClass");
     }
+
 
     @Test(groups = "cucumber", description = "Runs Cucumber Scenarios", dataProvider = "scenarios")
     public void scenario(PickleWrapper pickle, FeatureWrapper cucumberFeature) {
@@ -82,6 +88,8 @@ public class MySamsungA55TestNGRunnerTest {
         if (testNGCucumberRunner != null) {
             testNGCucumberRunner.finish();
         }
+
+        Hooks.cucumberJsonUpdate(GlobalConstants.PROJECT_PATH + GlobalConstants.SEPARATOR + "target\\cucumber-reports\\cucumber-" + new GlobalParams().getDeviceName() + ".json", new GlobalParams().getDeviceName());
     }
 
 }
