@@ -109,7 +109,7 @@ public class Hooks {
             }
 
             // 2. Create a filename for the video
-            String videoFileName = scenarioName.replaceAll("[^a-zA-Z0-9.-]", "_") + ".mp4";
+            String videoFileName = scenarioName + "_" + params.getPlatformName() + "_" + params.getDeviceName() + ".mp4";
             String filePath = reportDirFile.getAbsolutePath() + GlobalConstants.SEPARATOR + videoFileName;
             utils.log().info("videoFileName: " + videoFileName);
             utils.log().info("filePath: " + filePath);
@@ -120,7 +120,7 @@ public class Hooks {
             }
 
             // 4. Use a relative path that will work after publication
-            String videoUrl = "../../" + params.getPlatformName() + "_" + params.getDeviceName() + "/" + "Videos" + "/" + videoFileName;
+            String videoUrl = "../../../" + params.getPlatformName() + "_" + params.getDeviceName() + "/" + "Videos" + "/" + videoFileName;
             utils.log().info("videoUrl: " + videoUrl);
 
             // 5. Generate HTML with a proper video element

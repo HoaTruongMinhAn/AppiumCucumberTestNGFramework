@@ -31,10 +31,10 @@ public class VideoManager {
         }
         FileOutputStream stream = null;
         try {
-            stream = new FileOutputStream(videoDir + File.separator + scenarioName + ".mp4");
+            stream = new FileOutputStream(videoDir + File.separator + scenarioName + "_" + params.getPlatformName() + "_" + params.getDeviceName() + ".mp4");
             stream.write(Base64.decodeBase64(media));
             stream.close();
-            utils.log().info("video path: " + videoDir + File.separator + scenarioName + ".mp4");
+            utils.log().info("video path: " + videoDir + File.separator + scenarioName + "_" + params.getPlatformName() + "_" + params.getDeviceName() + ".mp4");
         } catch (Exception e) {
             utils.log().error("error during video capture" + e.toString());
         } finally {
