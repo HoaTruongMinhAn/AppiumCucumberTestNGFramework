@@ -71,8 +71,8 @@ public class RunnerBase {
         }
 
         //Comment this to prevent server stop after each class run. Purpose to solve the issue that Cucumber report cannot generate json file when running mutiple device parallel
-//        ServerManager serverManager = new ServerManager();
-//        serverManager.stopCurrentThreadServer();
+        ServerManager serverManager = new ServerManager();
+        serverManager.stopCurrentThreadServer();
 
         if (testNGCucumberRunner != null) {
             getRunner().finish();
