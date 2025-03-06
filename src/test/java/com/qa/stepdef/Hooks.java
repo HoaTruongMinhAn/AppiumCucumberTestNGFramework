@@ -68,8 +68,8 @@ public class Hooks {
         String scenarioName = scenario.getName();
         try {
             // 1. Create a directory to store videos if it doesn't exist
-            String dirPath = GlobalConstants.PROJECT_PATH + GlobalConstants.SEPARATOR + params.getPlatformName() + "_"
-                    + params.getDeviceName() + File.separator + "Videos" + GlobalConstants.SEPARATOR + scenarioName + ".mp4";
+//            String dirPath = GlobalConstants.PROJECT_PATH + GlobalConstants.SEPARATOR + params.getPlatformName() + "_" + params.getDeviceName() + File.separator + "Videos" + GlobalConstants.SEPARATOR + scenarioName + ".mp4";
+            String dirPath = params.getPlatformName() + "_" + params.getDeviceName() + File.separator + "Videos" + GlobalConstants.SEPARATOR + scenarioName + ".mp4";
 
 //            String videoDir = "target/videos/";
 //            Files.createDirectories(Paths.get(videoDir));

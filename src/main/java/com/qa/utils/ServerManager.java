@@ -127,6 +127,7 @@ public class ServerManager {
     public void stopCurrentThreadServer() {
         AppiumDriverLocalService server = getServer();
         if (server != null) {
+            utils.log().info("################## Stop server: " + server);
             server.stop();
             this.server.remove();
         }
