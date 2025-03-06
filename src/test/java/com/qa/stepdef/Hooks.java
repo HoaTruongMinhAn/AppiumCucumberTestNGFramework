@@ -1,7 +1,10 @@
 package com.qa.stepdef;
 
 import com.qa.pages.BasePage;
-import com.qa.utils.*;
+import com.qa.utils.DriverManager;
+import com.qa.utils.GlobalParams;
+import com.qa.utils.TestUtils;
+import com.qa.utils.VideoManager;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
@@ -102,7 +105,7 @@ public class Hooks {
         String scenarioName = scenario.getName();
         try {
             // 1. Create a relative directory for videos within the report structure
-            File reportDirFile = new File(params.getPlatformName() + "_" + params.getDeviceName() + GlobalConstants.SEPARATOR + "Videos");
+            File reportDirFile = new File(params.getPlatformName() + "_" + params.getDeviceName() + "/" + "Videos");
             utils.log().info("reportDirFile: " + reportDirFile);
             if (!reportDirFile.exists()) {
                 reportDirFile.mkdirs();
@@ -110,7 +113,7 @@ public class Hooks {
 
             // 2. Create a filename for the video
             String videoFileName = scenarioName + "_" + params.getPlatformName() + "_" + params.getDeviceName() + ".mp4";
-            String filePath = reportDirFile.getAbsolutePath() + GlobalConstants.SEPARATOR + videoFileName;
+            String filePath = reportDirFile.getAbsolutePath() + "/" + videoFileName;
             utils.log().info("videoFileName: " + videoFileName);
             utils.log().info("filePath: " + filePath);
 
@@ -121,7 +124,7 @@ public class Hooks {
 
             // 4. Use a relative path that will work after publication
 //            String videoUrl = "../" + params.getPlatformName() + "_" + params.getDeviceName() + "/" + "Videos" + "/" + videoFileName;
-            String videoUrl = reportDirFile + GlobalConstants.SEPARATOR + videoFileName;
+            String videoUrl = reportDirFile + "/" + videoFileName;
             utils.log().info("videoUrl: " + videoUrl);
 
             // 5. Generate HTML with a proper video element
