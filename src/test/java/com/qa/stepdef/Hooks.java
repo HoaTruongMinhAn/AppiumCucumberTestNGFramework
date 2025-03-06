@@ -132,6 +132,7 @@ public class Hooks {
                     "<source src='" + videoUrl + "' type='video/mp4'>" +
                     "Your browser does not support the video tag." +
                     "</video>";
+            html = html.replace("\\", "/");
             utils.log().info("html: " + html);
 
             // 6. Attach the HTML to the report
