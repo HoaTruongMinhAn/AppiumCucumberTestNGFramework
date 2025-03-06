@@ -102,8 +102,7 @@ public class Hooks {
         String scenarioName = scenario.getName();
         try {
             // 1. Create a relative directory for videos within the report structure
-            String reportDir = "videos";
-            File reportDirFile = new File(GlobalConstants.PROJECT_PATH + GlobalConstants.SEPARATOR + reportDir);
+            File reportDirFile = new File(GlobalConstants.PROJECT_PATH + GlobalConstants.SEPARATOR + params.getPlatformName() + "_" + params.getDeviceName() + File.separator + "Videos");
             utils.log().info("reportDirFile: " + reportDirFile);
             if (!reportDirFile.exists()) {
                 reportDirFile.mkdirs();
@@ -121,7 +120,7 @@ public class Hooks {
             }
 
             // 4. Use a relative path that will work after publication
-            String videoUrl = "../" + reportDir + "/" + videoFileName;
+            String videoUrl = "../../../" + params.getPlatformName() + "_" + params.getDeviceName() + File.separator + "Videos" + "/" + videoFileName;
             utils.log().info("videoUrl: " + videoUrl);
 
             // 5. Generate HTML with a proper video element
