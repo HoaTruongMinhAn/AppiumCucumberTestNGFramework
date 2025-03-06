@@ -102,7 +102,7 @@ public class Hooks {
         String scenarioName = scenario.getName();
         try {
             // 1. Create a relative directory for videos within the report structure
-            File reportDirFile = new File("htmlreports" + GlobalConstants.SEPARATOR + "OverviewFeaturesReport" + params.getPlatformName() + "_" + params.getDeviceName() + GlobalConstants.SEPARATOR + "Videos");
+            File reportDirFile = new File(params.getPlatformName() + "_" + params.getDeviceName() + GlobalConstants.SEPARATOR + "Videos");
             utils.log().info("reportDirFile: " + reportDirFile);
             if (!reportDirFile.exists()) {
                 reportDirFile.mkdirs();
