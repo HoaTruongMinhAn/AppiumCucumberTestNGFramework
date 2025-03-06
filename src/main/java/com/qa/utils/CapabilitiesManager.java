@@ -97,6 +97,22 @@ public class CapabilitiesManager {
 //                options.setAvdReadyTimeout(Duration.ofSeconds(180));
         options.setNewCommandTimeout(Duration.ofSeconds(300));
 
+        /*//############ reduce video attachment size
+        // Set video quality to low
+        options.setCapability("videoQuality", "low");
+
+        // Set lower video resolution
+        options.setCapability("videoResolution", "400x600");
+
+        // You can also try these additional video-related capabilities
+        options.setCapability("videoFormat", "mp4");
+        options.setCapability("videoSize", "50M"); // Limit file size
+        options.setCapability("videoEncoder", "h264");
+
+        options.setCapability("videoQuality", "1"); // Try numeric value (1-10, where 1 is lowest quality)
+        options.setCapability("videoFps", 5);      // Very low frame rate
+        options.setCapability("videoResolution", "320x480"); // Even lower resolution*/
+
         return options;
     }
 

@@ -5,7 +5,6 @@ import org.apache.commons.codec.binary.Base64;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
 
 public class VideoManager {
     TestUtils utils = new TestUtils();
@@ -14,7 +13,7 @@ public class VideoManager {
         ((CanRecordScreen) new DriverManager().getDriver()).startRecordingScreen();
     }
 
-    public byte[] stopRecording(String scenarioName) throws IOException {
+    public byte[] stopRecording(String scenarioName) throws Exception {
         GlobalParams params = new GlobalParams();
         String media = ((CanRecordScreen) new DriverManager().getDriver()).stopRecordingScreen();
         String dirPath = params.getPlatformName() + "_"

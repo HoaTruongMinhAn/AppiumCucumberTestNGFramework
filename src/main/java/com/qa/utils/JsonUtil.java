@@ -29,6 +29,14 @@ public class JsonUtil {
             ObjectMapper objectMapper = new ObjectMapper();
             JsonNode rootNode = objectMapper.readTree(new File(jsonFilePath));
 
+
+//            objectMapper.getFactory().setStreamReadConstraints(StreamReadConstraints.builder().maxStringLength(30000000).build());
+//            utils.log().info("########## newFile");
+//            File newFile = new File(jsonFilePath);
+//
+//            utils.log().info("########## objectMapper.readTree");
+//            JsonNode rootNode = objectMapper.readTree(newFile);
+
             for (JsonNode feature : rootNode) {
                 //replace scenario
                 System.out.println("########### replace scenario");
