@@ -92,6 +92,7 @@ public class Hooks {
 
             // 6. Attach the HTML link to the report
             scenario.attach(html.getBytes(), "text/html", "Video link for " + scenarioName);
+            scenario.attach(video, "video/mp4", "Video" + scenario.getName());
 
         } catch (Exception e) {
             e.printStackTrace();
