@@ -120,7 +120,7 @@ public class Hooks {
             }
 
             // 4. Use a relative path that will work after publication
-            String videoUrl = "../../../" + params.getPlatformName() + "_" + params.getDeviceName() + File.separator + "Videos" + "/" + videoFileName;
+            String videoUrl = "../../" + params.getPlatformName() + "_" + params.getDeviceName() + File.separator + "Videos" + "/" + videoFileName;
             utils.log().info("videoUrl: " + videoUrl);
 
             // 5. Generate HTML with a proper video element

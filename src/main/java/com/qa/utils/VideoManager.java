@@ -16,8 +16,11 @@ public class VideoManager {
     public byte[] stopRecording(String scenarioName) throws Exception {
         GlobalParams params = new GlobalParams();
         String media = ((CanRecordScreen) new DriverManager().getDriver()).stopRecordingScreen();
-        String dirPath = params.getPlatformName() + "_"
-                + params.getDeviceName() + File.separator + "Videos";
+        //Store on src
+//        String dirPath = params.getPlatformName() + "_" + params.getDeviceName() + File.separator + "Videos";
+
+        //Store on target
+        String dirPath = "target" + GlobalConstants.SEPARATOR + params.getPlatformName() + "_" + params.getDeviceName() + File.separator + "Videos";
 
         File videoDir = new File(dirPath);
 
