@@ -20,7 +20,8 @@ public class VideoManager {
 //        String dirPath = params.getPlatformName() + "_" + params.getDeviceName() + File.separator + "Videos";
 
         //Store on target
-        String dirPath = "target" + GlobalConstants.SEPARATOR + "cucumber-reports" + GlobalConstants.SEPARATOR + "cucumber-html-reports" + GlobalConstants.SEPARATOR + params.getPlatformName() + "_" + params.getDeviceName() + GlobalConstants.SEPARATOR + "Videos";
+//        String dirPath = "target" + GlobalConstants.SEPARATOR + "cucumber-reports" + GlobalConstants.SEPARATOR + "cucumber-html-reports" + GlobalConstants.SEPARATOR + params.getPlatformName() + "_" + params.getDeviceName() + GlobalConstants.SEPARATOR + "Videos";
+        String dirPath = "target" + "/" + "cucumber-reports" + "/" + "cucumber-html-reports" + "/" + params.getPlatformName() + "_" + params.getDeviceName() + "/" + "Videos";
 
         File videoDir = new File(dirPath);
 
@@ -31,10 +32,10 @@ public class VideoManager {
         }
         FileOutputStream stream = null;
         try {
-            stream = new FileOutputStream(videoDir + File.separator + scenarioName + "_" + params.getPlatformName() + "_" + params.getDeviceName() + ".mp4");
+            stream = new FileOutputStream(videoDir + "/" + scenarioName + "_" + params.getPlatformName() + "_" + params.getDeviceName() + ".mp4");
             stream.write(Base64.decodeBase64(media));
             stream.close();
-            utils.log().info("video path: " + videoDir + File.separator + scenarioName + "_" + params.getPlatformName() + "_" + params.getDeviceName() + ".mp4");
+            utils.log().info("video path: " + videoDir + "/" + scenarioName + "_" + params.getPlatformName() + "_" + params.getDeviceName() + ".mp4");
         } catch (Exception e) {
             utils.log().error("error during video capture" + e.toString());
         } finally {
