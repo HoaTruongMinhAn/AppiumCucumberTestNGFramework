@@ -1,10 +1,7 @@
 package com.qa.stepdef;
 
 import com.qa.pages.BasePage;
-import com.qa.utils.DriverManager;
-import com.qa.utils.GlobalConstants;
-import com.qa.utils.GlobalParams;
-import com.qa.utils.VideoManager;
+import com.qa.utils.*;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
@@ -15,6 +12,7 @@ import java.io.FileOutputStream;
 
 public class Hooks {
     GlobalParams params = new GlobalParams();
+    TestUtils utils = new TestUtils();
 
     @Before
     public void initialize(Scenario scenario) throws Exception {
@@ -64,7 +62,7 @@ public class Hooks {
         }*/
     }
 
-    public void attachVideoAsLink(byte[] video, Scenario scenario) {
+/*    public void attachVideoAsLink(byte[] video, Scenario scenario) {
         String scenarioName = scenario.getName();
         try {
             // 1. Create a directory to store videos if it doesn't exist
@@ -94,6 +92,47 @@ public class Hooks {
 
             //This option causes error JSON exceed max length
 //            scenario.attach(video, "video/mp4", "Video" + scenario.getName());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }*/
+
+    public void attachVideoAsLink(byte[] video, Scenario scenario) {
+        String scenarioName = scenario.getName();
+        try {
+            // 1. Create a relative directory for videos within the report structure
+            String reportDir = "videos";
+            File reportDirFile = new File(GlobalConstants.PROJECT_PATH + GlobalConstants.SEPARATOR + reportDir);
+            utils.log().info("reportDirFile: " + reportDirFile);
+            if (!reportDirFile.exists()) {
+                reportDirFile.mkdirs();
+            }
+
+            // 2. Create a filename for the video
+            String videoFileName = scenarioName.replaceAll("[^a-zA-Z0-9.-]", "_") + ".mp4";
+            String filePath = reportDirFile.getAbsolutePath() + GlobalConstants.SEPARATOR + videoFileName;
+            utils.log().info("videoFileName: " + videoFileName);
+            utils.log().info("filePath: " + filePath);
+
+            // 3. Save the video to file
+            try (FileOutputStream fos = new FileOutputStream(filePath)) {
+                fos.write(video);
+            }
+
+            // 4. Use a relative path that will work after publication
+            String videoUrl = "../" + reportDir + "/" + videoFileName;
+            utils.log().info("videoUrl: " + videoUrl);
+
+            // 5. Generate HTML with a proper video element
+            String html = "<video width='320' height='240' controls>" +
+                    "<source src='" + videoUrl + "' type='video/mp4'>" +
+                    "Your browser does not support the video tag." +
+                    "</video>";
+            utils.log().info("html: " + html);
+
+            // 6. Attach the HTML to the report
+            scenario.attach(html.getBytes(), "text/html", "Video for " + scenarioName);
 
         } catch (Exception e) {
             e.printStackTrace();

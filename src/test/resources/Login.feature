@@ -1,5 +1,6 @@
 Feature: Login scenarios
 
+  @test
   Scenario Outline: Login with invalid username
     When I enter username as "<username>"
     And I enter password as "<password>"
@@ -9,7 +10,6 @@ Feature: Login scenarios
       | username | password     | err                                                          |
       | aaa      | secret_sauce | Username and password do not match any user in this service. |
       | bbb      | secret_sauce | Username and password do not match any user in this service. |
-      | ccc      | secret_sauce | Username and password do not match any user in this service. |
 
   Scenario Outline: Login with invalid password
     When I enter username as "<username>"

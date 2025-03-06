@@ -25,6 +25,7 @@ public class DriverManager {
         GlobalParams params = new GlobalParams();
         Properties props = new PropertyManager().getProps();
         URL url = new URL(props.getProperty("appiumURL") + "4723");
+        utils.log().info("Appium URL: " + url);
 
         if (driver == null) {
             try {

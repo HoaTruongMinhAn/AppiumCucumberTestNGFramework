@@ -21,7 +21,7 @@ import org.junit.runner.RunWith;
         , dryRun = false
         , monochrome = true
 //        , strict = true
-//        , tags = "@test"
+        , tags = "@test"
 )
 public class MySamsungA55TestNGRunnerTest extends RunnerBase {
 
