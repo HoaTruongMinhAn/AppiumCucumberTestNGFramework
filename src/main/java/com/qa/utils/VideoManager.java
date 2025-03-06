@@ -20,7 +20,7 @@ public class VideoManager {
 //        String dirPath = params.getPlatformName() + "_" + params.getDeviceName() + File.separator + "Videos";
 
         //Store on target
-        String dirPath = "target" + GlobalConstants.SEPARATOR + params.getPlatformName() + "_" + params.getDeviceName() + File.separator + "Videos";
+        String dirPath = "target" + GlobalConstants.SEPARATOR + "cucumber-reports" + GlobalConstants.SEPARATOR + "cucumber-html-reports" + GlobalConstants.SEPARATOR + params.getPlatformName() + "_" + params.getDeviceName() + GlobalConstants.SEPARATOR + "Videos";
 
         File videoDir = new File(dirPath);
 

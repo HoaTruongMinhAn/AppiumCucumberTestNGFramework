@@ -102,7 +102,7 @@ public class Hooks {
         String scenarioName = scenario.getName();
         try {
             // 1. Create a relative directory for videos within the report structure
-            File reportDirFile = new File(GlobalConstants.PROJECT_PATH + GlobalConstants.SEPARATOR + params.getPlatformName() + "_" + params.getDeviceName() + File.separator + "Videos");
+            File reportDirFile = new File("target" + GlobalConstants.SEPARATOR + "cucumber-reports" + GlobalConstants.SEPARATOR + "cucumber-html-reports" + GlobalConstants.SEPARATOR + params.getPlatformName() + "_" + params.getDeviceName() + GlobalConstants.SEPARATOR + "Videos");
             utils.log().info("reportDirFile: " + reportDirFile);
             if (!reportDirFile.exists()) {
                 reportDirFile.mkdirs();
@@ -120,7 +120,7 @@ public class Hooks {
             }
 
             // 4. Use a relative path that will work after publication
-            String videoUrl = "../../../" + params.getPlatformName() + "_" + params.getDeviceName() + "/" + "Videos" + "/" + videoFileName;
+            String videoUrl = "../" + params.getPlatformName() + "_" + params.getDeviceName() + "/" + "Videos" + "/" + videoFileName;
             utils.log().info("videoUrl: " + videoUrl);
 
             // 5. Generate HTML with a proper video element
