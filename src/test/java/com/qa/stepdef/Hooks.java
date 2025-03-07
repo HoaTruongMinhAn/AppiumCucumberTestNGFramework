@@ -11,7 +11,6 @@ import io.cucumber.java.Scenario;
 import org.openqa.selenium.OutputType;
 
 import java.io.File;
-import java.io.FileOutputStream;
 
 public class Hooks {
     GlobalParams params = new GlobalParams();
@@ -65,7 +64,7 @@ public class Hooks {
         }*/
     }
 
-/*    public void attachVideoAsLink(byte[] video, Scenario scenario) {
+    /*public void attachVideoAsLink(byte[] video, Scenario scenario) {
         String scenarioName = scenario.getName();
         try {
             // 1. Create a directory to store videos if it doesn't exist
@@ -118,9 +117,9 @@ public class Hooks {
             utils.log().info("filePath: " + filePath);
 
             // 3. Save the video to file
-            try (FileOutputStream fos = new FileOutputStream(filePath)) {
-                fos.write(video);
-            }
+//            try (FileOutputStream fos = new FileOutputStream(filePath)) {
+//                fos.write(video);
+//            }
 
             // 4. Use a relative path that will work after publication
 //            String videoUrl = "../" + params.getPlatformName() + "_" + params.getDeviceName() + "/" + "Videos" + "/" + videoFileName;
@@ -128,6 +127,7 @@ public class Hooks {
             utils.log().info("videoUrl: " + videoUrl);
 
             // 5. Generate HTML with a proper video element
+            //Option 1
             String html = "<video width='320' height='240' controls autoplay muted>" +
                     "<source src='" + videoUrl + "' type='video/mp4'>" +
                     "Your browser does not support the video tag." +
@@ -138,17 +138,30 @@ public class Hooks {
             // 6. Attach the HTML to the report
             scenario.attach(html.getBytes(), "text/html", "Video for " + scenarioName);
 
+
+            //Option 2
             String html2 = "<video width='320' height='240' controls autoplay muted>" +
-                    "<source src='" + videoUrl + "' type='video/mpeg'>" +
+                    "<source src='C:/Users/minhanhoa.truong/Automation_Appium/06%20-%20Cucumber%20TestNG/AppiumCucumberTestNGFramework/target/cucumber-reports/cucumber-html-reports/Android_SamsungA55/Videos/ValidateProductInfoOnProductsPage_Android_SamsungA55.mp4' type='video/mp4'>" +
                     "Your browser does not support the video tag." +
                     "</video>";
             html2 = html2.replace("\\", "/");
-            scenario.attach(html2.getBytes(), "text/html", "22222222 Video for " + scenarioName);
+            utils.log().info("html: " + html2);
 
+            // 6. Attach the HTML to the report
+            scenario.attach(html2.getBytes(), "text/html", "2222222222 Video for " + scenarioName);
+
+            //Option 3
+            String html3 = "<a href=\"" + videoUrl + "\" target=\"_blank\">Video here kkkkkkk</a> ";
+            html3 = html3.replace("\\", "/");
+            utils.log().info("html: " + html3);
+
+            // 6. Attach the HTML to the report
+            scenario.attach(html3.getBytes(), "text/html", "33333333333 Video for " + scenarioName);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
+        utils.log().info("Hooks: attachVideoAsLink completed.");
     }
 
 }
