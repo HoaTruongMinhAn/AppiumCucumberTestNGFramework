@@ -128,7 +128,7 @@ public class Hooks {
             utils.log().info("videoUrl: " + videoUrl);
 
             // 5. Generate HTML with a proper video element
-            String html = "<video width='320' height='240' controls autoplay muted>" +
+            String html = "<video width='320' height='240' controls autoplay muted poster=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=\">" +
                     "<source src='" + videoUrl + "' type='video/mp4'>" +
                     "Your browser does not support the video tag." +
                     "</video>";
