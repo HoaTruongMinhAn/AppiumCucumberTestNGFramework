@@ -128,7 +128,7 @@ public class Hooks {
             utils.log().info("videoUrl: " + videoUrl);
 
             // 5. Generate HTML with a proper video element
-            String html = "<video width='320' height='240' controls autoplay muted poster=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=\">" +
+            String html = "<video width='320' height='240' controls autoplay muted>" +
                     "<source src='" + videoUrl + "' type='video/mp4'>" +
                     "Your browser does not support the video tag." +
                     "</video>";
@@ -138,17 +138,13 @@ public class Hooks {
             // 6. Attach the HTML to the report
             scenario.attach(html.getBytes(), "text/html", "Video for " + scenarioName);
 
-            String html2 = "<a href=\"https://b4b5-116-110-42-167.ngrok-free.app/job/Test_Android/OverviewFeaturesReport/Android_SamsungA55/Videos/ValidateProductInfoOnProductsPage_Android_SamsungA55.mp4\"> VIDEO LINK </a> ";
-            scenario.attach(html2.getBytes(), "text/html", "Hoa Video for " + scenarioName);
-
-            String html3 = "<video width='320' height='240' controls autoplay muted >" +
-                    "<source src='https://b4b5-116-110-42-167.ngrok-free.app/job/Test_Android/OverviewFeaturesReport/Android_SamsungA55/Videos/ValidateProductInfoOnProductsPage_Android_SamsungA55.mp4' type='video/mp4'>" +
+            String html2 = "<video width='320' height='240' controls autoplay muted>" +
+                    "<source src='" + videoUrl + "' type='video/mpeg'>" +
                     "Your browser does not support the video tag." +
                     "</video>";
-            scenario.attach(html3.getBytes(), "text/html", "Hoa 3333 Video for " + scenarioName);
+            html2 = html2.replace("\\", "/");
+            scenario.attach(html2.getBytes(), "text/html", "22222222 Video for " + scenarioName);
 
-            String html4 = "<iframe width=\"320\" height=\"240\" src=\"Android_SamsungA55/Videos/ValidateProductInfoOnProductsPage_Android_SamsungA55.mp4\" frameborder=\"0\" allowfullscreen></iframe>";
-            scenario.attach(html4.getBytes(), "text/html", "Hoa 3333 Video for " + scenarioName);
 
         } catch (Exception e) {
             e.printStackTrace();
