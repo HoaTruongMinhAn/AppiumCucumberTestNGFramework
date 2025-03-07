@@ -138,7 +138,7 @@ public class Hooks {
             // 6. Attach the HTML to the report
             scenario.attach(html.getBytes(), "text/html", "Video for " + scenarioName);
 
-            String html2 = "https://b4b5-116-110-42-167.ngrok-free.app/job/Test_Android/OverviewFeaturesReport/Android_SamsungA55/Videos/ValidateProductInfoOnProductsPage_Android_SamsungA55.mp4\n";
+            String html2 = "<a href=\"https://b4b5-116-110-42-167.ngrok-free.app/job/Test_Android/OverviewFeaturesReport/Android_SamsungA55/Videos/ValidateProductInfoOnProductsPage_Android_SamsungA55.mp4\"> VIDEO LINK </a> ";
             scenario.attach(html2.getBytes(), "text/html", "Hoa Video for " + scenarioName);
 
             String html3 = "<video width='320' height='240' controls autoplay muted >" +
