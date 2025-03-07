@@ -147,6 +147,9 @@ public class Hooks {
                     "</video>";
             scenario.attach(html3.getBytes(), "text/html", "Hoa 3333 Video for " + scenarioName);
 
+            String html4 = "<iframe width=\"320\" height=\"240\" src=\"Android_SamsungA55/Videos/ValidateProductInfoOnProductsPage_Android_SamsungA55.mp4\" frameborder=\"0\" allowfullscreen></iframe>";
+            scenario.attach(html4.getBytes(), "text/html", "Hoa 3333 Video for " + scenarioName);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
