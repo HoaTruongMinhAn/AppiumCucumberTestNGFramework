@@ -141,6 +141,12 @@ public class Hooks {
             String html2 = "https://b4b5-116-110-42-167.ngrok-free.app/job/Test_Android/OverviewFeaturesReport/Android_SamsungA55/Videos/ValidateProductInfoOnProductsPage_Android_SamsungA55.mp4\n";
             scenario.attach(html2.getBytes(), "text/html", "Hoa Video for " + scenarioName);
 
+            String html3 = "<video width='320' height='240' controls autoplay muted >" +
+                    "<source src='https://b4b5-116-110-42-167.ngrok-free.app/job/Test_Android/OverviewFeaturesReport/Android_SamsungA55/Videos/ValidateProductInfoOnProductsPage_Android_SamsungA55.mp4' type='video/mp4'>" +
+                    "Your browser does not support the video tag." +
+                    "</video>";
+            scenario.attach(html3.getBytes(), "text/html", "Hoa 3333 Video for " + scenarioName);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
