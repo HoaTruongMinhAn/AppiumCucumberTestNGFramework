@@ -158,6 +158,276 @@ public class Hooks {
             // 6. Attach the HTML to the report
             scenario.attach(html3.getBytes(), "text/html", "33333333333 Video for " + scenarioName);
 
+            //Option 4
+            String html4 = "<video width='320' height='240' controls autoplay muted>" +
+                    "<source src='https://drive.google.com/file/d/1dfDBRv9f8pqDf96bSpSgCURSzR8TWK9q/view?usp=sharing' type='video/mp4'>" +
+                    "Your browser does not support the video tag." +
+                    "</video>";
+            html4 = html4.replace("\\", "/");
+            utils.log().info("html: " + html4);
+
+            // 6. Attach the HTML to the report
+            scenario.attach(html4.getBytes(), "text/html", "4444444444444444 Video for " + scenarioName);
+
+            //Option 5
+            String html5 = "<video width='320' height='240' controls autoplay muted>" +
+                    "<source src='https://drive.google.com/file/d/1dfDBRv9f8pqDf96bSpSgCURSzR8TWK9q/preview?autoplay=1' type='video/mp4'>" +
+                    "Your browser does not support the video tag." +
+                    "</video>";
+            html5 = html5.replace("\\", "/");
+            utils.log().info("html: " + html5);
+
+            // 6. Attach the HTML to the report
+            scenario.attach(html5.getBytes(), "text/html", "55555555555 Video for " + scenarioName);
+
+            //Option 6
+            String html6 = "<div style='text-align:center; padding:20px;'>" +
+                    "<a href='https://drive.google.com/file/d/1dfDBRv9f8pqDf96bSpSgCURSzR8TWK9q' target='_blank' rel='noopener noreferrer' " +
+                    "onclick='window.open(this.href, \"_blank\"); return false;' " +
+                    "style='display:inline-block; padding:12px 24px; background-color:#4285F4; " +
+                    "color:white; text-decoration:none; font-weight:bold; border-radius:4px;'>" +
+                    "Click to View Video" +
+                    "</a>" +
+                    "<p style='margin-top:10px;'>Video will open in a new tab</p>" +
+                    "</div>";
+            html6 = html6.replace("\\", "/");
+            utils.log().info("html: " + html6);
+
+            // 6. Attach the HTML to the report
+            scenario.attach(html6.getBytes(), "text/html", "666666666 Video for " + scenarioName);
+
+            /*//Option 7 JS
+            String containerId = "video-container-" + System.currentTimeMillis();
+            String html7 = "<div id='" + containerId + "' style='width:640px; height:360px; background:#000; display:flex; align-items:center; justify-content:center;'>" +
+                    "<p style='color:white;'>Loading video player...</p>" +
+                    "</div>" +
+                    "<script>" +
+                    "  (function() {" +
+                    "    // Create video element dynamically" +
+                    "    var container = document.getElementById('" + containerId + "');" +
+                    "    if (!container) return;" +
+                    "    " +
+                    "    // Clear the container" +
+                    "    container.innerHTML = '';" +
+                    "    " +
+                    "    // Create video element" +
+                    "    var video = document.createElement('video');" +
+                    "    video.width = 640;" +
+                    "    video.height = 360;" +
+                    "    video.controls = true;" +
+                    "    video.autoplay = true;" +
+                    "    video.muted = true;" +
+                    "    video.style.maxWidth = '100%';" +
+                    "    " +
+                    "    // Create source element" +
+                    "    var source = document.createElement('source');" +
+                    "    source.src = 'https://drive.google.com/file/d/1dfDBRv9f8pqDf96bSpSgCURSzR8TWK9q';" +
+                    "    source.type = 'video/mp4';" +
+                    "    " +
+                    "    // Append elements" +
+                    "    video.appendChild(source);" +
+                    "    container.appendChild(video);" +
+                    "    " +
+                    "    // Add fallback text" +
+                    "    var fallback = document.createElement('p');" +
+                    "    fallback.textContent = 'Your browser does not support the video tag.';" +
+                    "    video.appendChild(fallback);" +
+                    "    " +
+                    "    // Try to play the video" +
+                    "    video.addEventListener('loadeddata', function() {" +
+                    "      try {" +
+                    "        var playPromise = video.play();" +
+                    "        if (playPromise !== undefined) {" +
+                    "          playPromise.catch(function(error) {" +
+                    "            console.log('Autoplay was prevented');" +
+                    "          });" +
+                    "        }" +
+                    "      } catch(e) {}" +
+                    "    });" +
+                    "  })();" +
+                    "</script>";
+            html7 = html7.replace("\\", "/");
+            utils.log().info("html: " + html7);
+
+            // 6. Attach the HTML to the report
+            scenario.attach(html7.getBytes(), "text/html", "77777777777 Video for " + scenarioName);*/
+
+            //Option 8 JS
+            /*String containerId = "video-container-" + System.currentTimeMillis();
+            String html7 = "<div id='" + containerId + "' style='width:640px; height:360px; background:#000; display:flex; align-items:center; justify-content:center;'>" +
+                    "<p style='color:white;'>Loading video player...</p>" +
+                    "</div>" +
+                    "<script>" +
+                    "  (function() {" +
+                    "    // Create video element dynamically" +
+                    "    var container = document.getElementById('" + containerId + "');" +
+                    "    if (!container) return;" +
+                    "    " +
+                    "    // Clear the container" +
+                    "    container.innerHTML = '';" +
+                    "    " +
+                    "    // Create video element" +
+                    "    var video = document.createElement('video');" +
+                    "    video.width = 640;" +
+                    "    video.height = 360;" +
+                    "    video.controls = true;" +
+                    "    video.autoplay = true;" +
+                    "    video.muted = true;" +
+                    "    video.style.maxWidth = '100%';" +
+                    "    " +
+                    "    // Create source element" +
+                    "    var source = document.createElement('source');" +
+                    "    source.src = 'https://drive.google.com/uc?export=download&id=1dfDBRv9f8pqDf96bSpSgCURSzR8TWK9q';" +
+                    "    source.type = 'video/mp4';" +
+                    "    " +
+                    "    // Append elements" +
+                    "    video.appendChild(source);" +
+                    "    container.appendChild(video);" +
+                    "    " +
+                    "    // Add fallback text" +
+                    "    var fallback = document.createElement('p');" +
+                    "    fallback.textContent = 'Your browser does not support the video tag.';" +
+                    "    video.appendChild(fallback);" +
+                    "    " +
+                    "    // Try to play the video" +
+                    "    video.addEventListener('loadeddata', function() {" +
+                    "      try {" +
+                    "        var playPromise = video.play();" +
+                    "        if (playPromise !== undefined) {" +
+                    "          playPromise.catch(function(error) {" +
+                    "            console.log('Autoplay was prevented');" +
+                    "          });" +
+                    "        }" +
+                    "      } catch(e) {}" +
+                    "    });" +
+                    "  })();" +
+                    "</script>";
+            html7 = html7.replace("\\", "/");
+            utils.log().info("html: " + html7);
+
+            // 6. Attach the HTML to the report
+            scenario.attach(html7.getBytes(), "text/html", "77777777777 Video for " + scenarioName);*/
+
+            //Option 9 JS
+            /*String containerId = "video-container-" + System.currentTimeMillis();
+            String html7 = """
+                    <div id='video-container-1741344235814' style='width:640px; height:360px; background:#000; display:flex; align-items:center; justify-content:center;'>
+                      <p style='color:white;'>Loading video player...</p>
+                    </div>
+                    <script>
+                      (function() {
+                        // Create video element dynamically
+                        var container = document.getElementById('video-container-1741344235814');
+                        if (!container) return;
+                       \s
+                        // Clear the container
+                        container.innerHTML = '';
+                       \s
+                        // Create video element
+                        var video = document.createElement('video');
+                        video.width = 640;
+                        video.height = 360;
+                        video.controls = true;
+                        video.autoplay = true;
+                        video.muted = true;
+                        video.style.maxWidth = '100%';
+                       \s
+                        // Create source element
+                        var source = document.createElement('source');
+                        source.src = 'https://drive.google.com/uc?export=download&id=1dfDBRv9f8pqDf96bSpSgCURSzR8TWK9q';
+                        source.type = 'video/mp4';
+                       \s
+                        // Append elements
+                        video.appendChild(source);
+                        container.appendChild(video);
+                       \s
+                        // Add fallback text
+                        var fallback = document.createElement('p');
+                        fallback.textContent = 'Your browser does not support the video tag.';
+                        video.appendChild(fallback);
+                       \s
+                        // Try to play the video
+                        video.addEventListener('loadeddata', function() {
+                          try {
+                            var playPromise = video.play();
+                            if (playPromise !== undefined) {
+                              playPromise.catch(function(error) {
+                                console.log('Autoplay was prevented');
+                              });
+                            }
+                          } catch(e) {
+                            console.error('Error playing video:', e);
+                          }
+                        });
+                      })();
+                    </script>
+                    """;
+//            html7 = html7.replace("\\", "/");
+            utils.log().info("html: " + html7);
+
+            // 6. Attach the HTML to the report
+            scenario.attach(html7.getBytes(), "text/html", "77777777777 Video for " + scenarioName);*/
+
+            //Option 10 JS
+            String containerId = "video-container-" + System.currentTimeMillis();
+            String html7 = """
+                    <div id='video-container-1741344235814' style='width:640px; height:360px; background:#000; display:flex; align-items:center; justify-content:center;'>
+                      <p style='color:white;'>Loading video player...</p>
+                    </div>
+                    <script>
+                      (function() {
+                        // Create video element dynamically
+                        var container = document.getElementById('video-container-1741344235814');
+                        if (!container) return;
+                       \s
+                        // Clear the container
+                        container.innerHTML = '';
+                       \s
+                        // Create video element
+                        var video = document.createElement('video');
+                        video.width = 640;
+                        video.height = 360;
+                        video.controls = true;
+                        video.autoplay = true;
+                        video.muted = true;
+                        video.style.maxWidth = '100%';
+                       \s
+                        // Create source element
+                        var source = document.createElement('source');
+                        source.src = './Android_SamsungA55/Videos/ValidateProductInfoOnProductsPage_Android_SamsungA55.mp4';
+                        source.type = 'video/mp4';
+                       \s
+                        // Append elements
+                        video.appendChild(source);
+                        container.appendChild(video);
+                       \s
+                        // Add fallback text
+                        var fallback = document.createElement('p');
+                        fallback.textContent = 'Your browser does not support the video tag.';
+                        video.appendChild(fallback);
+                       \s
+                        // Try to play the video
+                        video.addEventListener('loadeddata', function() {
+                          try {
+                            var playPromise = video.play();
+                            if (playPromise !== undefined) {
+                              playPromise.catch(function(error) {
+                                console.log('Autoplay was prevented');
+                              });
+                            }
+                          } catch(e) {
+                            console.error('Error playing video:', e);
+                          }
+                        });
+                      })();
+                    </script>
+                    """;
+//            html7 = html7.replace("\\", "/");
+            utils.log().info("html: " + html7);
+
+            // 6. Attach the HTML to the report
+            scenario.attach(html7.getBytes(), "text/html", "77777777777 Video for " + scenarioName);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
